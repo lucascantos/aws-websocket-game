@@ -6,6 +6,9 @@ provider:
   name: aws
   runtime: python3.9
 
+plugins:
+  - serverless-offline
+
 functions:
   hello:
     handler: handler.hello
@@ -13,3 +16,16 @@ functions:
       - httpApi:
           path: /
           method: get
+
+      - websocket:
+          route: hello
+          routeResponseSelectionExpression: $default
+
+  connection:
+    handler: handler.connection
+    events:
+      - websocket: 
+          route: $connect
+      - websocket:
+          route: $disconnect
+    
