@@ -17,6 +17,9 @@ var/
 .installed.cfg
 *.egg
 
+# Visual Studio Code
+.vscode/settings.json
+
 # Serverless directories
 .serverless
 node_modules

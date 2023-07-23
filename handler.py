@@ -1,8 +1,11 @@
+"""Handle all communications with the client."""
 import json
 import logging
+from typing import Any
 
 
-def hello(event, context):
+def hello(event: dict, context: dict) -> dict[str, Any]:
+    """Handle the hello world event."""
     logging.error("heck")
     body = {
         "message": "Go Serverless v2.0! Your function executed successfully!",
@@ -22,7 +25,9 @@ def hello(event, context):
     }
     """
 
-def connection(event, context):
+
+def connection(event: dict, context: dict) -> dict[str, Any]:
+    """Handle the connection with the client."""
     logging.warning(event)
     body = {
         "message": "Go Serverless v2.0! Your function executed successfully!",
@@ -30,4 +35,12 @@ def connection(event, context):
     }
     return {"statusCode": 200, "body": json.dumps(body)}
 
-def input_receiver(e)
+
+def client_input(event: dict, context: dict) -> None:
+    """Handle the input from the client."""
+    pass
+
+
+def world_state(event: dict, context: dict) -> None:
+    """Handle the world state from the server."""
+    pass
