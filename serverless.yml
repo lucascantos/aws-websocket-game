@@ -1,0 +1,15 @@
+org: cantoslucas
+app: websocket-game
+service: websocket-game
+
+provider:
+  name: aws
+  runtime: python3.9
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
